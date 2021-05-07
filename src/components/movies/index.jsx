@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from "react";
 import styled from "styled-components";
-
 
 const Movies = ({ movies, searchData, saveList, setSaveList }) => {
 
-  const [disable, setDisable] =useState(false)
-
   const handleSave = (movie) => {
-    console.log("handlesave", movie);
-   
     if (saveList.length !== 5) {
       if (!saveList.includes(movie)) {
         setSaveList([...saveList, movie]);
       }
     }
-   
   };
 
   const deleteNomination = (save) => {
@@ -24,15 +18,6 @@ const Movies = ({ movies, searchData, saveList, setSaveList }) => {
       })
     );
   };
-
-  // console.log("movies", movies);
-  console.log("saveList", saveList);
-
-  const handleDisable = () => {
-    
-     setDisable(!disable);
-    
-  }
 
   return (
     <Container>
@@ -78,7 +63,6 @@ const Movies = ({ movies, searchData, saveList, setSaveList }) => {
 
 export default Movies;
 
-
 const Container = styled.div`
   display: flex;
   width: 80%;
@@ -113,7 +97,7 @@ const SavedContainer = styled.div`
 `;
 
 const MovieName = styled.li`
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   img {
@@ -122,7 +106,7 @@ const MovieName = styled.li`
     padding-right: 6px;
     border: 4px;
   }
-`
+`;
 const Button = styled.button`
   border: none;
   padding: 10px;

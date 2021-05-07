@@ -1,10 +1,7 @@
-import React, { useState} from 'react'
-import styled from 'styled-components'
-
+import React from "react";
+import styled from "styled-components";
 
 const Search = ({ setSearchData, movieSelect, saveList }) => {
-
-
   const handleOnChange = (e) => {
     setSearchData(e.target.value);
   };
@@ -31,7 +28,7 @@ const Search = ({ setSearchData, movieSelect, saveList }) => {
   );
 };
 
-export default Search
+export default Search;
 
 const Container = styled.div`
   width: 80%;
@@ -41,7 +38,6 @@ const Container = styled.div`
   height: 150px;
   position: relative;
   margin-bottom: 15px;
-  /* display:flex; */
   p {
     text-align: center;
     background: red;
@@ -52,6 +48,7 @@ const Container = styled.div`
     top: 95px;
   }
 `;
+
 const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -69,18 +66,18 @@ const Form = styled.form`
 
 const InputWrapper = styled.div`
   flex: 1;
-`
+`;
 
 const Input = styled.input`
   flex: 1;
-  width:100%;
+  width: 100%;
   padding: 12px;
   font-size: 18px;
   border: none;
-  &:focus{
+  &:focus {
     outline: none;
   }
-`
+`;
 
 const Button = styled.button`
   padding: 12px;

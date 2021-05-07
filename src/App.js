@@ -7,17 +7,24 @@ import Movies from "./components/movies";
 function App() {
   const [searchData, setSearchData] = useState("");
   const [movies, setMovies] = useState([]);
-  // const [send, setSend] = useState()
-  const [saveList, setSaveList] = useState(
-    JSON.parse([localStorage.getItem("saved")])
-  );
+  const [saveList, setSaveList] = useState([]);
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   console.log(movies);
 
+  const getLocalTodos = () => {
+    if (localStorage.getItem("saved") === null) {
+      localStorage.setItem("saved", JSON.stringify([]));
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem("saved"));
+      setSaveList((x) => (x = todoLocal));
+    }
+  };
+    
+
   const movieSelect = async (e) => {
-    if(!searchData){
-      return 
+    if (!searchData) {
+      return;
     }
     e.preventDefault();
     let movieCall = await Axios.get(
@@ -25,12 +32,12 @@ function App() {
     );
     setMovies(movieCall.data.Search);
   };
-
   useEffect(() => {
-    localStorage.setItem('saved', JSON.stringify(saveList))
-  }, [saveList])
-
-  
+    getLocalTodos()
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(saveList));
+  }, [saveList]);
 
   return (
     <div className="App">
