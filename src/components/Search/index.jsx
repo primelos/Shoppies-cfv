@@ -37,7 +37,7 @@ const Container = styled.div`
   width: 80%;
   margin: auto;
   margin-top: 4%;
-  background: #d4af37;
+  background: rgb(13 136 207 / 18%);
   height: 150px;
   position: relative;
   margin-bottom: 15px;
@@ -77,6 +77,9 @@ const Input = styled.input`
   padding: 12px;
   font-size: 18px;
   border: none;
+  &:focus{
+    outline: none;
+  }
 `
 
 const Button = styled.button`

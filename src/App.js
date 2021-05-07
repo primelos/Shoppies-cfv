@@ -8,18 +8,29 @@ function App() {
   const [searchData, setSearchData] = useState("");
   const [movies, setMovies] = useState([]);
   // const [send, setSend] = useState()
-  const [saveList, setSaveList] = useState([]);
+  const [saveList, setSaveList] = useState(
+    JSON.parse([localStorage.getItem("saved")])
+  );
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   console.log(movies);
 
   const movieSelect = async (e) => {
+    if(!searchData){
+      return 
+    }
     e.preventDefault();
     let movieCall = await Axios.get(
       `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${searchData}`
     );
     setMovies(movieCall.data.Search);
   };
+
+  useEffect(() => {
+    localStorage.setItem('saved', JSON.stringify(saveList))
+  }, [saveList])
+
+  
 
   return (
     <div className="App">

@@ -4,17 +4,17 @@ import styled from "styled-components";
 
 const Movies = ({ movies, searchData, saveList, setSaveList }) => {
 
+  const [disable, setDisable] =useState(false)
+
   const handleSave = (movie) => {
     console.log("handlesave", movie);
-    // e.preventDefault();
-    // let save = movies.filter(item => {
-    //   item.imdbID !== movie.imdbID
-    // })
+   
     if (saveList.length !== 5) {
       if (!saveList.includes(movie)) {
         setSaveList([...saveList, movie]);
       }
     }
+   
   };
 
   const deleteNomination = (save) => {
@@ -28,18 +28,32 @@ const Movies = ({ movies, searchData, saveList, setSaveList }) => {
   // console.log("movies", movies);
   console.log("saveList", saveList);
 
+  const handleDisable = () => {
+    
+     setDisable(!disable);
+    
+  }
+
   return (
     <Container>
       <ResultsContainer>
-        {searchData && <p>Results for "{searchData}"</p>}
+        {movies.length > 0 && <p>Results for "{searchData}"</p>}
         {movies &&
           movies.map((movie, id) => (
             <DisplayResults key={id}>
               <MovieName>
-                <img src={movie.Poster} alt={movie.Title} />{" "}
+                {movie.Poster === "N/A" ? (
+                  <img src="/images/no-image.png" alt="no image" />
+                ) : (
+                  <img src={movie.Poster} alt={movie.Title} />
+                )}
                 <p>{movie.Title}</p> <p>({movie.Year})</p>
               </MovieName>
-              <Button type="submit" onClick={() => handleSave(movie)}>
+              <Button
+                disabled={saveList.includes(movie)}
+                type="submit"
+                onClick={() => handleSave(movie)}
+              >
                 Nominate
               </Button>
             </DisplayResults>
@@ -69,7 +83,7 @@ const Container = styled.div`
   display: flex;
   width: 80%;
   margin: auto;
-  background: #d4af37;
+  background: rgb(13 136 207 / 18%);
 `;
 
 const ResultsContainer = styled.div`
