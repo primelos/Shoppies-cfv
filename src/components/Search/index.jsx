@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-const Search = ({ setSearchData, movieSelect, saveList }) => {
+const Search = ({ setSearchData, saveList, sending, searchData }) => {
   const handleOnChange = (e) => {
     setSearchData(e.target.value);
+    
   };
 
   return (
     <Container>
-      <Form id="create-course-form" onSubmit={movieSelect}>
+      <Form id="create-course-form" onSubmit={sending}>
         <InputWrapper>
           <Input
             type="search"
             name="movie"
             placeholder="movie nominees"
             onChange={handleOnChange}
+            value={searchData}
           />
         </InputWrapper>
         <div>

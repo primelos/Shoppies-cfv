@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Movies = ({ movies, searchData, saveList, setSaveList }) => {
+const Movies = ({ movies, searchData, saveList, send, setSaveList }) => {
 
   const handleSave = (movie) => {
     if (saveList.length !== 5) {
@@ -22,7 +22,7 @@ const Movies = ({ movies, searchData, saveList, setSaveList }) => {
   return (
     <Container>
       <ResultsContainer>
-        {movies.length > 0 && <p>Results for "{searchData}"</p>}
+        {movies.length === 0 ? '' :  <p>Results for "{send}"</p>}
         {movies &&
           movies.map((movie, id) => (
             <DisplayResults key={id}>

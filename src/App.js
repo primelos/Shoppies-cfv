@@ -8,6 +8,8 @@ function App() {
   const [searchData, setSearchData] = useState("");
   const [movies, setMovies] = useState([]);
   const [saveList, setSaveList] = useState([]);
+  const [send, setSend] = useState()
+
 
   const API_KEY = process.env.REACT_APP_API_KEY;
   console.log(movies);
@@ -20,18 +22,31 @@ function App() {
       setSaveList((x) => (x = todoLocal));
     }
   };
-    
+    const sending = (e) => {
+      e.preventDefault();
+      setSend(searchData)
+      
+    }
+useEffect(() => {
 
-  const movieSelect = async (e) => {
-    if (!searchData) {
+  const movieSelect = async () => {
+    if (!send) {
       return;
     }
-    e.preventDefault();
     let movieCall = await Axios.get(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${searchData}`
+      `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${send}`
     );
-    setMovies(movieCall.data.Search);
+    console.log('movieCall', movieCall);
+    if(movieCall.data.Search){
+      setMovies(movieCall.data.Search);
+    }
+    setSearchData('')
+    console.log('hit');
   };
+  movieSelect()
+}, [send])
+
+
   useEffect(() => {
     getLocalTodos()
   }, []);
@@ -45,14 +60,15 @@ function App() {
       <Search
         setSearchData={setSearchData}
         searchData={searchData}
-        movieSelect={movieSelect}
         saveList={saveList}
+        sending={sending}
       />
       <Movies
         movies={movies}
         searchData={searchData}
         setSaveList={setSaveList}
         saveList={saveList}
+        send={send}
       />
     </div>
   );
