@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Axios from 'axios'
-import Search from './components/Search'
-import Movies from './components/movies';
-
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Axios from "axios";
+import Search from "./components/Search";
+import Movies from "./components/movies";
 
 function App() {
-  const [searchData, setSearchData] = useState('')
-  const [movies, setMovies] = useState([])
+  const [searchData, setSearchData] = useState("");
+  const [movies, setMovies] = useState([]);
   // const [send, setSend] = useState()
   const [saveList, setSaveList] = useState([]);
 
@@ -20,8 +19,7 @@ function App() {
       `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${searchData}`
     );
     setMovies(movieCall.data.Search);
-  }
-
+  };
 
   return (
     <div className="App">
