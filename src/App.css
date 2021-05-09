@@ -4,3 +4,7 @@
 h1 {
   margin-left: 86px;
 }
+h1 span {
+  font-weight: 300;
+  font-size: 12px;
+}

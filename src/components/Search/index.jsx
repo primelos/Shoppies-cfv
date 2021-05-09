@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Search = ({ setSearchData, saveList, sending, searchData }) => {
   const handleOnChange = (e) => {
     setSearchData(e.target.value);
-    
   };
 
   return (

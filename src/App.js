@@ -8,13 +8,20 @@ function App() {
   const [searchData, setSearchData] = useState("");
   const [movies, setMovies] = useState([]);
   const [saveList, setSaveList] = useState([]);
-  const [send, setSend] = useState()
-
+  const [send, setSend] = useState();
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(movies);
 
-  const getLocalTodos = () => {
+  const getLocalMovies = () => {
+    if (localStorage.getItem("movies") === null) {
+      localStorage.setItem("movies", JSON.stringify([]));
+    } else {
+      let movieLocal = JSON.parse(localStorage.getItem("movies"));
+      setMovies((x) => (x = movieLocal));
+    }
+  };
+
+  const getLocalSaves = () => {
     if (localStorage.getItem("saved") === null) {
       localStorage.setItem("saved", JSON.stringify([]));
     } else {
@@ -22,41 +29,58 @@ function App() {
       setSaveList((x) => (x = todoLocal));
     }
   };
-    const sending = (e) => {
-      e.preventDefault();
-      setSend(searchData)
-      
-    }
-useEffect(() => {
 
-  const movieSelect = async () => {
-    if (!send) {
-      return;
-    }
-    let movieCall = await Axios.get(
-      `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${send}`
-    );
-    console.log('movieCall', movieCall);
-    if(movieCall.data.Search){
-      setMovies(movieCall.data.Search);
-    }
-    setSearchData('')
-    console.log('hit');
+  const sending = (e) => {
+    e.preventDefault();
+    setSend(searchData);
   };
-  movieSelect()
-}, [send])
+  useEffect(() => {
+    const movieSelect = async () => {
+      if (!send) {
+        return;
+      }
+      let movieCall = await Axios.get(
+        `https://www.omdbapi.com/?apikey=${API_KEY}&type=movie&s=${send}`
+      );
+      if (movieCall.data.Search) {
+        setMovies(movieCall.data.Search);
+      }
+      setSearchData("");
+    };
+    movieSelect();
+  }, [send]);
 
+  const handleSave = (movie) => {
+    if (saveList.length !== 5) {
+      if (
+        saveList.find(({ imdbID }) => imdbID === movie.imdbID) === undefined
+      ) {
+        setSaveList([...saveList, movie]);
+      }
+    }
+  };
 
   useEffect(() => {
-    getLocalTodos()
+    getLocalMovies();
   }, []);
+
+  useEffect(() => {
+    getLocalSaves();
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("saved", JSON.stringify(saveList));
   }, [saveList]);
 
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
+
   return (
     <div className="App">
-      <h1>The Shoppies</h1>
+      <h1>
+        The Shoppies <span>(select 5 nominations)</span>
+      </h1>
       <Search
         setSearchData={setSearchData}
         searchData={searchData}
@@ -69,6 +93,7 @@ useEffect(() => {
         setSaveList={setSaveList}
         saveList={saveList}
         send={send}
+        handleSave={handleSave}
       />
     </div>
   );

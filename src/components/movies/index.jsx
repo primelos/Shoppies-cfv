@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Movies = ({ movies, searchData, saveList, send, setSaveList }) => {
-
-  const handleSave = (movie) => {
-    if (saveList.length !== 5) {
-      if (!saveList.includes(movie)) {
-        setSaveList([...saveList, movie]);
-      }
-    }
-  };
-
+const Movies = ({
+  handleSave,
+  movies,
+  searchData,
+  saveList,
+  send,
+  setSaveList,
+}) => {
   const deleteNomination = (save) => {
     setSaveList(
       saveList.filter((item) => {
-        return item.Title !== save.Title;
+        return item.imdbID !== save.imdbID;
       })
     );
   };
 
+  // console.log(movies);
+
   return (
     <Container>
       <ResultsContainer>
-        {movies.length === 0 ? '' :  <p>Results for "{send}"</p>}
+        {movies.length === 0 ? "" : <p>Results for "{send}"</p>}
         {movies &&
           movies.map((movie, id) => (
             <DisplayResults key={id}>
@@ -35,7 +35,12 @@ const Movies = ({ movies, searchData, saveList, send, setSaveList }) => {
                 <p>{movie.Title}</p> <p>({movie.Year})</p>
               </MovieName>
               <Button
-                disabled={saveList.includes(movie)}
+                disabled={
+                  !(
+                    saveList.find(({ imdbID }) => imdbID === movie.imdbID) ===
+                    undefined
+                  )
+                }
                 type="submit"
                 onClick={() => handleSave(movie)}
               >
@@ -73,7 +78,7 @@ const Container = styled.div`
 const ResultsContainer = styled.div`
   padding: 0 5px 0 5px;
   width: 100%;
-  border-right: 1px solid black;
+  border-right: 1px solid #fff;
 
   p:first-child {
     font-size: 20px;
