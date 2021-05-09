@@ -1,4 +1,4 @@
-#The Shopify Shoppies
+###he Shopify Shoppies
 
 ## Getting Started with Create React App
 
