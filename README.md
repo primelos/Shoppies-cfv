@@ -2,14 +2,14 @@
 
 ## Technical requirements
   - Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx)       ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `DONE`
-  - Each search result should list at least its title, year of release and a button to nominate that film  DONE
-  - Updates to the search terms should update the result list                                              DONE
-  - Movies in search results can be added and removed from the nomination list                             DONE
-  - If a search result has already been nominated, disable its nominate button                             DONE
-  - Display a banner when the user has 5 nominations                                                       DONE
+  - Each search result should list at least its title, year of release and a button to nominate that film ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) DONE
+  - Updates to the search terms should update the result list                                             ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `DONE`
+  - Movies in search results can be added and removed from the nomination list                           ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  `DONE`
+  - If a search result has already been nominated, disable its nominate button                           ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  `DONE`
+  - Display a banner when the user has 5 nominations                                                     ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  `DONE`
 
 ## Extras
-  - Save nomination lists if the user leaves the page                                                      DONE
+  - Save nomination lists if the user leaves the page                                                    ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  `DONE`
 
 ## Edge Case solved:
   - When page refreshes the nomination button was no longer disabled
