@@ -17,7 +17,11 @@
 ## Edge Case solved:
   - When page refreshes the nomination button was no longer disabled
   - If movie had same name both movies where deleted from nomination list
-  
+  <br />
+  <br />
+  <br />
+
+
 
 
 
