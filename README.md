@@ -1,4 +1,7 @@
-# The Shopify Shoppies
+# The Shopify Shoppies 
+
+### We'd like a simple to use interface that makes it easy to:
+
 
 ## Technical requirements
   - Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx)       ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `DONE`
