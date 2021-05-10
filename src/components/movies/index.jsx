@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Movies = ({
@@ -17,8 +17,6 @@ const Movies = ({
     );
   };
 
-  // console.log(movies);
-
   return (
     <Container>
       <ResultsContainer>
@@ -28,7 +26,7 @@ const Movies = ({
             <DisplayResults key={id}>
               <MovieName>
                 {movie.Poster === "N/A" ? (
-                  <img src="/images/no-image.png" alt="no image" />
+                  <img src="/images/no-image.png" alt="nothing to show" />
                 ) : (
                   <img src={movie.Poster} alt={movie.Title} />
                 )}

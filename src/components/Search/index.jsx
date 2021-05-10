@@ -85,8 +85,10 @@ const Button = styled.button`
   font-size: 18px;
   background: #e7e7e7;
   border: none;
+  transition: all 0.2s ease 0s;
   &:hover {
     background: #9e9e9e;
     color: #fff;
+    transform: scale(1.05);
   }
 `;
