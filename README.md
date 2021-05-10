@@ -1,7 +1,7 @@
 # The Shopify Shoppies
 
 ## Technical requirements
-  - Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx)          DONE
+  - Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx)       ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `DONE`
   - Each search result should list at least its title, year of release and a button to nominate that film  DONE
   - Updates to the search terms should update the result list                                              DONE
   - Movies in search results can be added and removed from the nomination list                             DONE
