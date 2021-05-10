@@ -1,6 +1,6 @@
 # The Shopify Shoppies 
 
-### We'd like a simple to use interface that makes it easy to:
+### "We'd like a simple to use interface"
 
 
 ## Technical requirements
